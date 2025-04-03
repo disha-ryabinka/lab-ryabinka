@@ -1,0 +1,27 @@
+@startuml
+class AnalogClock {
+    - int hourHandAngle
+    - int minuteHandAngle
+    + AnalogClock(int, int)
+    + getHourHandAngle(): int
+    + getMinuteHandAngle(): int
+}
+
+interface DigitalClock {
+    + getTime(): String
+}
+
+class AnalogToDigitalAdapter {
+    + AnalogToDigitalAdapter(AnalogClock)
+    + getTime(): String
+}
+
+class Main {
+    + main(String[]): void
+}
+
+AnalogToDigitalAdapter --> AnalogClock
+AnalogToDigitalAdapter ..|> DigitalClock
+Main --> DigitalClock
+
+@enduml
